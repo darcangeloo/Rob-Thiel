@@ -1,0 +1,6 @@
+model/
+*.safetensors
+*.bin
+__pycache__/
+.venv/
+datasets/*.json

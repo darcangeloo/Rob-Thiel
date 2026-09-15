@@ -1,0 +1,8 @@
+torch
+transformers
+peft
+bitsandbytes
+trl
+accelerate
+torchao
+flash_attention_2
