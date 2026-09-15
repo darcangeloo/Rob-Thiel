@@ -3,7 +3,7 @@ from trl import SFTTrainer, SFTConfig
 from model import peft_model
 from peft import LoraConfig
 
-dataset_raw = load_dataset("json", data_files=["datasets\marketing_dataset_batch01-06_alpaca.json"], split="train")
+dataset_raw = load_dataset("json", data_files=["datasets\marketing_dataset_batch01-06_alpaca.json", "datasets\startup_batch.jsonl"], split="train")
 dataset = dataset_raw.train_test_split(test_size=0.15, seed=42)
 
 def preprocess_function(example):
@@ -24,10 +24,12 @@ training_args = SFTConfig(
     per_device_train_batch_size=1, 
     gradient_accumulation_steps=12, 
     gradient_checkpointing=True,
-    num_train_epochs=3,
+    num_train_epochs=5,
     eval_strategy="steps",
     output_dir="model",
-    eval_steps=10
+    eval_steps=10,
+    load_best_model_at_end=True,
+    metric_for_best_model="eval_loss"
 )
 
 trainer = SFTTrainer(
