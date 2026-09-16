@@ -8,7 +8,7 @@ base_model = AutoModelForCausalLM.from_pretrained("Qwen/Qwen2.5-7B-Instruct", qu
 
 tokenizer = AutoTokenizer.from_pretrained("Qwen/Qwen2.5-7B-Instruct")
 
-model = PeftModel.from_pretrained(base_model, "model/checkpoint-123")
+model = PeftModel.from_pretrained(base_model, "model/checkpoint-370")
 
 while True:
     user_input = input("Tu: ")
